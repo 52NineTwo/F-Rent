@@ -1,0 +1,122 @@
+<template>
+    <div class="Login-Body">
+        <div class="top-button-icon">
+            <mu-icon-button icon="keyboard_arrow_left" slot="left" @click="RouterOne" />
+        </div>
+        <div class="input-class">
+            <mu-paper v-bind:class="['demo-paper-two',{'demo-paper-one': UserIcon}]" circle :zDepth="3">
+                <mu-avatar v-bind:class="[{'Login-Button-Two': UserIcon}]" src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" />
+            </mu-paper>
+            <mu-text-field iconClass="Phone-Input" style="color:#fff" :label="phoneLaBel" v-model="PhoneValue" @change="PhoneLaBel" type="number" icon="phone_iphone" labelFloat fullWidth/>
+            <router-view></router-view>
+            <mu-raised-button @click="login()" :label="LoginBtn" v-bind:class="['Login-Button-One',{'Login-Button-Two': LoginEnd}]" secondary fullWidth/>
+        </div>  
+        <mu-snackbar v-if="toast" message="请输入正确手机号(demo输入11位即可)" action="确定" @actionClick="hideToast" @close="hideToast"/>
+    </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      PhoneValue: '',
+      phoneLaBel: '请输入您的手机号',
+      LoginBtn: '下一步',
+      LoginEnd: false,
+      UserIcon: true,
+      toast: false,
+    }
+  },
+  watch: {
+      PhoneValue(curVal,oldVal){
+          if(this.PhoneValue.length >= '11'){
+              this.UserIcon = false;
+          }else{
+              this.UserIcon = true;
+          }
+      }
+  },
+  methods: {
+      PhoneLaBel () {
+          this.phoneLaBel = ' ';
+      },
+      login () {
+          if(this.PhoneValue >= '11'){
+              if(this.PhoneValue.length > '11'){
+                    this.LoginEnd = true;
+                    this.$router.push('/register');
+                }else{
+                    this.LoginEnd = true;
+                    this.$router.push('/loginpassword');
+                    this.$store.commit('LoginPhone',this.PhoneValue)
+                }
+          }else{
+              this.toast = true
+              if (this.toastTimer) clearTimeout(this.toastTimer)
+              this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
+          }
+      },
+      hideToast () {
+        this.toast = false
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+      },
+      RouterOne(){
+          this.UserIcon = true;
+          this.LoginEnd = false;
+          this.$router.go(-1);
+      },
+  }
+}
+</script>
+<style lang="less">
+    .mu-text-field-input{
+        color: #fff;
+    }
+</style>
+<style scoped lang="less">
+    .Login-Body{
+        background-color:#474a4f;
+        height: 100vh;
+    }
+    .input-class{
+        text-align:center;
+        padding: 0 2em 0 1em;
+        background-color:#474a4f;
+    }
+    .Phone-Input{
+        color: #ffffff;
+    }
+    .top-button-icon{
+        background-color:#474a4f;
+        color: #ffffff;
+    }
+    .Login-Button-One{
+        margin-top: 2em;
+        width:96%;
+        margin-left:4%;
+    }
+    .Login-Button-Two{
+        display: none;
+    }
+    .demo-paper-two {
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        margin: 20px;
+        text-align: center;
+        background-color: #474a4f;
+    }
+    .demo-paper-one{
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        margin: 20px;
+        text-align: center;
+        background-color: #474a4f;
+        display: none;
+    }
+    .demo-paper-two .mu-avatar{
+        height: 100px;
+        width: 100px;
+    }
+</style>
