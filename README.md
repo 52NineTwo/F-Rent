@@ -1,7 +1,7 @@
 ## 前言
 >本项目是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个租房社区Demo
 >
->[项目更新历史](#更新)
+>[项目更新历史] (##更新)
 >
 >开发环境 Macos + Vs code + Chrome
 >>项目的灵感最初是来源于 剑网三 - 海鳗插件社区(匿名游戏交友平台)
@@ -22,7 +22,7 @@
 *	Mcok.js		[GitHub地址](https://github.com/nuysoft/Mock)
 *	Vue-lazyload(图片懒加载组件)[GitHub地址](https://github.com/hilongjw/vue-lazyload)
 
-  ###关于在线数据接口
+  ### 关于在线数据接口
   感谢大搜车团队开放的模拟数据的在线Mock服务：[Easy-Mock](http://www.easy-mock.com/)
 
 ## 使用项目
