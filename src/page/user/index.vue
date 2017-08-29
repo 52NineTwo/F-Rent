@@ -9,30 +9,27 @@
                 <mu-icon value="info" slot="right"/>
               </mu-list-item>
               <mu-flexbox>
-                <mu-flexbox-item>
-                  <mu-flat-button to="/user/follow" label="关注" icon="person_add" class="User-Top-Btn-Left" />
+                <mu-flexbox-item >
+                  <mu-flat-button @click="User_Follow" label="关注" icon="person_add" class="User-Top-Btn-Left" />
                 </mu-flexbox-item>
                 <mu-flexbox-item>
-                  <mu-flat-button label="收藏" icon="grade" class="User-Top-Btn-Left"/>
+                  <mu-flat-button @click="ToUser_issue('collect')" label="收藏" icon="grade" class="User-Top-Btn-Left"/>
                 </mu-flexbox-item>
                 <mu-flexbox-item>
-                  <mu-flat-button label="点赞" icon="thumb_up" class="User-Top-Btn"/>
+                  <mu-flat-button @click="ToUser_issue('dotpraise')" label="点赞" icon="thumb_up" class="User-Top-Btn"/>
                 </mu-flexbox-item>
               </mu-flexbox>
           </mu-card>
           <mu-card class="UserCard-Top">
-              <mu-list-item title="我发布的帖子">
+              <mu-list-item title="我发布的帖子" @click="ToUser_issue('issue')">
                 <mu-icon slot="right" value="chevron_right" color="#9e9e9e"/>
               </mu-list-item>
-              <mu-list-item title="我发布的评论" style="border-top: 1px solid #eeeeee">
+              <mu-list-item title="我发布的评论" to="/user/discuss" style="border-top: 1px solid #eeeeee">
                 <mu-icon slot="right" value="chevron_right" color="#9e9e9e"/>
               </mu-list-item>
           </mu-card>
           <mu-card class="UserCard-Top">
-              <mu-list-item title="手机绑定">
-                <mu-icon slot="right" value="chevron_right" color="#9e9e9e"/>
-              </mu-list-item>
-              <mu-list-item title="实名认证" style="border-top: 1px solid #eeeeee">
+              <mu-list-item title="手机绑定" to="/user/cellphone">
                 <mu-icon slot="right" value="chevron_right" color="#9e9e9e"/>
               </mu-list-item>
               <mu-list-item title="修改资料" to="/user/modifydata" style="border-top: 1px solid #eeeeee">
@@ -71,7 +68,6 @@ export default {
       console.log(this.PhoneValue.length)
       if(this.PhoneValue.length < '11'){
         this.$router.push('/login')
-        this.$router.go(0);
       }
   },
   computed: {
@@ -88,7 +84,13 @@ export default {
       sessionStorage.removeItem('userphone')
       console.log(this.PhoneValue.length)
       this.$router.push('/home');
-      this.$router.go(0);
+    },
+    ToUser_issue(label){
+      sessionStorage.setItem("UserTo", JSON.stringify(label))
+      this.$router.push('/user/Userissue');
+    },
+    User_Follow(){
+      this.$router.push('/user/follow')
     }
   }
 }

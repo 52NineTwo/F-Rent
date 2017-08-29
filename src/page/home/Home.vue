@@ -29,8 +29,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" :src="items + item.urlid" :zDepth="1">
+                    <mu-flexbox-item v-for="items in item.url" :key="items.id" >
+                        <img v-lazy="items.name + item.urlid">
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -67,7 +67,7 @@
                 </mu-card-text>
                 <mu-flexbox>
                     <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" :src="items + item.urlid" :zDepth="1">
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1">
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -104,7 +104,7 @@
                 </mu-card-text>
                 <mu-flexbox>
                     <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" :src="items + item.urlid"  :zDepth="1">
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1">
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -141,7 +141,7 @@
                 </mu-card-text>
                 <mu-flexbox>
                     <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" :src="items + item.urlid"  :zDepth="1">
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1">
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -178,7 +178,7 @@
                 </mu-card-text>
                 <mu-flexbox>
                     <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" :src="items + item.urlid" :zDepth="1">
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1">
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -235,7 +235,6 @@ export default {
             if(res.status === 200) {
                 this.LaBel_Data = res.data.data.list;
                 sessionStorage.setItem("Lab_Type", JSON.stringify(this.LaBel_Data));
-                console.log(this.PhoneValue);
             }
             })
   },
@@ -259,7 +258,6 @@ export default {
   watch: {
       activeTab(curVal,oldVal){
           sessionStorage.setItem("Tab_Label", JSON.stringify(this.activeTab));
-          console.log(this.activeTab);
           this.LoginData();
         },
       topPopup (val) {
@@ -283,14 +281,12 @@ export default {
             .then(res => {
             if(res.status === 200) {
                 const Home_Api = this.activeTab;
-                console.log(res.data.data.list);
                 if(Home_Api === 'colligate'){
                     this.colligate = res.data.data.list;
                 }else if(Home_Api === 'seekrent'){
                     this.seekrent = res.data.data.list;
                 }else if(Home_Api === 'Arent'){
                     this.Arent = res.data.data.list;
-                    console.log(this.Arent);
                 }else if(Home_Api === 'roommate'){
                     this.roommate = res.data.data.list;
                 }else{
@@ -299,9 +295,6 @@ export default {
                 this.refreshing = false;
             }
             })
-            .catch(res => {
-            console.log('err');
-            });
       },
     handleTabChange (val) {
         this.activeTab = val;
@@ -395,5 +388,11 @@ export default {
         -webkit-flex: 1;
         flex: 1;
         width: 0%;
+    }
+    img{
+        transition:all 0.5s;
+    }
+    img[lazy=loaded]{
+        animation:fade 0.5s;
     }
 </style>

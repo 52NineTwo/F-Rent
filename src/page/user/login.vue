@@ -27,8 +27,12 @@ export default {
       toast: false,
     }
   },
+  created(){
+      this.LoginEnd = (this.$route.path != '/login' && true) || false;
+  },
   watch: {
       PhoneValue(curVal,oldVal){
+          console.log(this.PhoneValue.length)
           if(this.PhoneValue.length >= '11'){
               this.UserIcon = false;
           }else{
@@ -41,14 +45,15 @@ export default {
           this.phoneLaBel = ' ';
       },
       login () {
-          if(this.PhoneValue >= '11'){
+          if(this.PhoneValue.length >= '11'){
               if(this.PhoneValue.length > '11'){
                     this.LoginEnd = true;
+                    this.$store.commit('LoginPhone',this.PhoneValue)
                     this.$router.push('/register');
                 }else{
                     this.LoginEnd = true;
-                    this.$router.push('/loginpassword');
                     this.$store.commit('LoginPhone',this.PhoneValue)
+                    this.$router.push('/loginpassword');
                 }
           }else{
               this.toast = true

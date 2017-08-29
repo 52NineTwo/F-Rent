@@ -15,7 +15,7 @@
         <mu-refresh-control :refreshing="refreshing" :trigger="trigger" anchorOrigin="" @refresh="PullTop"/>
         <mu-grid-list :padding="1" style="margin-top: 55px">
             <mu-grid-tile v-for="item in img_Data" :key="item.title" titlePosition="top" actionPosition="left" :rows="item.featured ? 2 : 1" :cols="item.featured ? 2 : 1">
-                <img :src="item.url + item.urlid"  />
+                <img v-lazy="item.url + item.urlid"  />
                 <span slot="title">{{item.title}}</span>
                 <span slot="subTitle">by <b>{{item.name}}</b></span>
                 <mu-icon-button icon="star_border" slot="action"/>
@@ -82,6 +82,11 @@ export default {
     .bottom-munu-class{
         color: #ffffff;
     }
+    .titleclass{
+        font-size: 1.2em;
+        text-align: center;
+        margin-left: 9.4%;
+    }
 </style>
 <style scoped lang="less">
     .mu-paper{
@@ -93,11 +98,6 @@ export default {
     .Top-Class{
         position:fixed;
         top: 0;
-    }
-    .titleclass{
-        font-size: 1.2em;
-        text-align: center;
-        margin-left: 9.4%;
     }
     .mu-dropDown-menu-text{
         color: #ffffff;

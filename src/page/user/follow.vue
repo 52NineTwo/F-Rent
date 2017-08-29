@@ -3,7 +3,7 @@
     <mu-appbar title="我关注的人" titleClass="titleClass">
         <mu-icon-button icon="keyboard_arrow_left" slot="left" @click="RouterOne" />
     </mu-appbar>
-    <mu-list-item class="follow-TopInput" title="去看他们的帖子">
+    <mu-list-item @click="ToUser_issue('attention')" class="follow-TopInput" title="去看他们的帖子">
       <mu-icon slot="left" value="arrow_forward"/>
     </mu-list-item>
     <mu-list-item style="background-color:#fff" title="溯翎" describeText="这个人很懒，什么也没有写">
@@ -21,6 +21,10 @@
     methods: {
         RouterOne(){
             this.$router.go(-1);
+        },
+        ToUser_issue(label){
+            sessionStorage.setItem("UserTo", JSON.stringify(label))
+            this.$router.push('/user/Userissue');
         },
     },
     }
