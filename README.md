@@ -1,4 +1,4 @@
-##前言
+## 前言
 >本项目是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个租房社区Demo
 >
 >开发环境 Macos + Vs code + Chrome
@@ -11,7 +11,7 @@
 >>此Demo虽说不是什么复杂有高技术含量的项目，但也是我一点心中所想，所以此项目会长期跟进 不定期进行新功能添加和代码逻辑重构。
 >>
 
-##技术栈
+## 技术栈
 *  Vue2			[GitHub地址](https://github.com/vuejs/vue)
 *  Vuex			[GitHub地址](https://github.com/vuejs/vuex)
 *	Vue-router	[GitHub地址](https://github.com/vuejs/vue-router)
@@ -23,7 +23,7 @@
   ###关于在线数据接口
   感谢大搜车团队开放的模拟数据的在线Mock服务：[Easy-Mock](http://www.easy-mock.com/)
 
-##使用项目
+## 使用项目
 ```bash
 1.克隆项目:		git clone git@github.com:52NineTwo/F-Rent.git
 2.安装依赖:		npm install
@@ -31,7 +31,7 @@
 4.发布代码:		npm run build
 ```
 
-##功能
+## 功能
 - [x] 首页
  	- [x] 列表，上拉加载(完成)
  	- [x] 求租列表(待改进)
@@ -64,14 +64,14 @@
 	- [x] 注册(完成)
 
 	
-##目标
+## 目标
 >构建一个前后端、WebApp、微信公众号完整项目
 >
 >敬请期待！！！
 
-##截图
+## 截图
 
-##项目目录说明
+## 项目目录说明
 <pre>
 ├── build              // 构建服务和webpack配置
 ├── config             // 项目不同环境的配置
@@ -113,8 +113,8 @@
 │   └── main.js         // Webpack 预编译入口
 </pre>
 
-##更新
-####2017-8-30
+## 更新
+#### 2017-8-30
 >首次将此项目代码更新到GitHub
 >>由于是初型代码逻辑以及结构比较乱，已经有下次的更新规划了。
 >>> 1.使用Vuex进行登录状态验证.
