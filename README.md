@@ -1,17 +1,20 @@
 ## 前言
->本项目是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个租房社区Demo
+>本项目(友租)是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个租房社区Demo
 >
 >[项目更新历史](#更新)
 >
 >开发环境 Macos + Vs code + Chrome
->>项目的灵感最初是来源于 剑网三 - 海鳗插件社区(匿名游戏交友平台)
+>>项目的灵感最初来源：由于我是一个宅男在杭州没什么朋友 加上刚来杭州时想租一个适合自己的房子很难 所以想到做这么一个轻社区
 >>
->>由于我是一个宅男在杭州没什么朋友 加上刚来杭州时想租一个适合自己的房子很难 所以想到做这么一个Demo
+>>在做初型时由于没有UI设计稿和原型图，想到一部分做一部分 所以初版采用了Muse-UI框架先完成大体视图 后续再逐个进行代码重写以及组件开发 
 >>
->>在做初型时由于没有UI设计稿和原型图，想到一部分做一部分 所以初版采用了Muse-UI框架先完成大体视图 后续再进行逐个代码重写以及组件开发 
->>
->>此Demo虽说不是什么复杂有高技术含量的项目，但也是我一点心中所想，所以此项目会长期跟进 进行新功能添加和代码逻辑重构。
->>
+>>此Demo虽说不是什么复杂有高技术含量的项目，但也是我一个小梦想，所以此项目会长期跟进 进行新功能添加和代码逻辑重构。
+>
+>喜欢的可以“Star”一下，也可以关注一下此项目。
+>
+>如果有什么可以帮到你的 无论是不是此项目中的问题 都可以在Lessus提出 我会尽我所能帮你解决！😜
+>
+>欢迎大佬们提出好的问题和点子，我会第一时间去修正。👍
 
 ## 技术栈
 *  Vue2			[GitHub地址](https://github.com/vuejs/vue)
@@ -21,9 +24,16 @@
 *	Muse-ui		[GitHub地址](https://github.com/museui/muse-ui)
 *	Mcok.js		[GitHub地址](https://github.com/nuysoft/Mock)
 *	Vue-lazyload(图片懒加载组件)[GitHub地址](https://github.com/hilongjw/vue-lazyload)
+*	WebPack		[GitHub地址](https://github.com/webpack/webpack)
+*	Es6语法
 
   ### 关于在线数据接口
   感谢大搜车团队开放的模拟数据的在线Mock服务：[Easy-Mock](http://www.easy-mock.com/)
+  
+## 演示
+Demo地址： [Demo](http://www.heitem.com/frent) (请使用Chrom手机模式预览)
+
+二维码：
 
 ## 使用项目
 ```bash
@@ -64,12 +74,6 @@
 	- [x] 登录首页(完成)
 	- [x] 登录(完成)
 	- [x] 注册(完成)
-
-	
-## 目标
->构建一个前后端、WebApp、微信公众号完整项目
->
->敬请期待！！！
 
 ## 截图
 
