@@ -23,22 +23,12 @@ Vue.use(ImgLazyLoad, {
   })
 axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 axios.defaults.autofaceURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
-/* eslint-disable no-new */
 
 const router = new Router({
-  //mode: 'history',
+  mode: 'history',
   routes,
 })
-//判断登录状态
-// router.beforeEach(({meta, path}, from, next) => {
-//   var { auth = true } = meta
-//   var isLogin = Boolean(store.state.user.id) //true用户已登录， false用户未登录
 
-//   if (auth && !isLogin && path !== '/login') {
-//       return next({ path: '/login' })
-//   }
-//   next()
-// })
 
 new Vue({
   el: '#app',

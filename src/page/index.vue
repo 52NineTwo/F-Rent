@@ -47,7 +47,7 @@ export default {
 }
 </script>
 <<style lang="less">
-    .mu-bottom-item-active .mu-bottom-item-icon,.mu-bottom-item-active .mu-bottom-item-text{
+    .mu-bottom-item-active .mu-buttom-item-wrapper .mu-bottom-item-icon,.mu-bottom-item-active .mu-buttom-item-wrapper .mu-bottom-item-text{
         color: #ff5252;
     }
 </style>

@@ -76,8 +76,8 @@ export default {
         width: 100%;
         padding-right: 1em;
         margin-top: 55px;
-        border-radius: 0px;
-        background-color: #474a4f;
+        border-radius: 0px !important;
+        background-color: #474a4f !important;
     }
     .bottom-munu-class{
         color: #ffffff;

@@ -1,8 +1,8 @@
 {
   "name": "friends-rent",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "",
+  "description": "Vue2 community item - F-Rent",
+  "author": "Guowh <1322232323@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

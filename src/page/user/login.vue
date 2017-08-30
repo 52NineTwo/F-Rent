@@ -74,7 +74,7 @@ export default {
 }
 </script>
 <style lang="less">
-    .mu-text-field-input{
+    .mu-text-field-content input{
         color: #fff;
     }
 </style>

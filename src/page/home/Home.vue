@@ -7,7 +7,7 @@
         <mu-tab value="roommate" icon="group" title="室友"/>
         <mu-tab :value="LaBel_Type" :icon="LaBel_Icon" ref="LaBel" :title="'#' + LaBel_Name" @click="open('bottom')" />
     </mu-tabs>
-    <mu-popup position="bottom" :open="bottomPopup" @close="close('bottom')">
+    <mu-popup popupClass="home-popup-bottom" position="bottom" :open="bottomPopup" @close="close('bottom')">
         <mu-appbar title="请选择标签">
         <mu-flat-button slot="right" label="关闭" color="white" @click="close('bottom')"/></mu-appbar>
         <mu-content-block>
@@ -322,7 +322,7 @@ export default {
 }
 </script>
 <<style lang="less">
-    .mu-popup, .mu-popup-bottom{
+    .home-popup-bottom{
         margin-bottom: 56px;
         width:100%;
     }

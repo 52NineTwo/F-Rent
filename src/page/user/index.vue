@@ -6,7 +6,7 @@
           <mu-card class="UserCard-Top">
               <mu-list-item to="/user/modifydata" class="Top-list-item" title="溯翎(郭维鹤)" describeText="这个人很懒，还没有什么留下">
                 <mu-avatar src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" slot="leftAvatar"/>
-                <mu-icon value="info" slot="right"/>
+                <mu-icon value="account_circle" slot="right"/>
               </mu-list-item>
               <mu-flexbox>
                 <mu-flexbox-item >

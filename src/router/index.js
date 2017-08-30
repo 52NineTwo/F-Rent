@@ -38,19 +38,6 @@ export default [
         {path: '/user',name: '个人中心',component: User,},
       ]
     },
-    {path: '/user/power',       name: '发布权限',    component: Power},
-    {path: '/user/keyword',     name: '关键词过滤',  component: keyWord},
-    {path: '/user/blacklist',   name: '黑名单',     component: BlackList},
-    {path: '/user/modifydata',  name: '修改资料',   component: ModifyData},
-    {path: '/user/cellphone',   name: '手机绑定',   component: CellPhone},
-    {path: '/user/follow',      name: '关注的人',   component: Follow},
-    {path: '/publish',          name: '发布',      component: Publish},
-    {path: '/user/userissue',   name:'我相关的',    component: UserIssUe,},
-    {path: '/user/discuss',     name: '我的评论',   component: DiscUss},
-    {path: '/more/discover',    name: '发现',      component: DiscoVer},
-    {path: '/more/information', name: '收到的评论', component: InforMation},
-    {path: '/more/label',       name: '分类及标签', component: MoreLaBel},
-    {path: '/more/ranking',     name: '数据排行榜', component: RanKing},
     { 
       path: '/login', 
       component: Login, 
@@ -60,4 +47,17 @@ export default [
         {path: '/register', component: Register, name: '注册'}
       ]
     },
+    {path: '/user/power',       name: '发布权限',    component: Power},
+    {path: '/user/keyword',     name: '关键词过滤',  component: keyWord},
+    {path: '/user/blacklist',   name: '黑名单',      component: BlackList},
+    {path: '/user/modifydata',  name: '修改资料',    component: ModifyData},
+    {path: '/user/cellphone',   name: '手机绑定',    component: CellPhone},
+    {path: '/user/follow',      name: '关注的人',    component: Follow},
+    {path: '/publish',          name: '发布',       component: Publish},
+    {path: '/user/userissue',   name:'我相关的',     component: UserIssUe,},
+    {path: '/user/discuss',     name: '我的评论',    component: DiscUss},
+    {path: '/more/discover',    name: '发现',        component: DiscoVer},
+    {path: '/more/information', name: '收到的评论',   component: InforMation},
+    {path: '/more/label',       name: '分类及标签',   component: MoreLaBel},
+    {path: '/more/ranking',     name: '数据排行榜',   component: RanKing},
   ]
