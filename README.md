@@ -80,15 +80,15 @@
 
 ## 截图
 #### 首页、登录
-![首页](http://www.heitem.com/wp-content/uploads/2017/08/首页-1-1.gif)
-![登录](http://www.heitem.com/wp-content/uploads/2017/08/登录-登录、注册.gif)
+![首页](./demonstration/1.gif)
+![登录](./demonstration/2.gif)
 #### 更多
-![发现](http://www.heitem.com/wp-content/uploads/2017/08/更多-发现.gif)
-![评论、标签](http://www.heitem.com/wp-content/uploads/2017/08/更多-评论、标签.gif)
+![发现](./demonstration/4.gif)
+![评论、标签](./demonstration/3.gif)
 
 #### 个人中心
-![黑名单、关键字](http://www.heitem.com/wp-content/uploads/2017/08/我的-黑名单、关键字-3.gif)
-![资料、发布关注](http://www.heitem.com/wp-content/uploads/2017/08/我的-资料、发布、关注-1.gif)
+![黑名单、关键字](./demonstration/6.gif)
+![资料、发布关注](./demonstration/5.gif)
 
 ## 项目目录说明
 <pre>
