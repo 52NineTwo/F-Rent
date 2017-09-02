@@ -1,16 +1,29 @@
 <template>
 <div>
     <router-view></router-view>
-<mu-paper class="Bottom-Nav-Class">
-  <mu-bottom-nav :value="bottomNav" @change="handleChange">
-    <mu-bottom-nav-item value="home" title="主页" icon="home" to="/home" />
-    <mu-bottom-nav-item value="favorites" title="图集" icon="collections" to="/atlas" />
-    <mu-float-button icon="add" @click="PuBliSh" />
-    <mu-bottom-nav-item value="more" title="更多" icon="shop_two" to="more"  />
-    <mu-bottom-nav-item value="user" title="我" icon="account_circle" to="/user" />
-  </mu-bottom-nav>
-</mu-paper>
-<div class="seize-seat-bottom"></div>
+    <mu-popup position="bottom" popupClass="Login-popup-bottom" :open="LoginBottom" @close="LoginBottomClose">
+        <mu-content-block class="Login-Bottom">
+            <mu-flat-button label="关闭" icon="clear" class="Login-Bottom-Close" @click="LoginBottomClose" /><Br />
+            <div class="Login-Bottom-Icon">
+                <img src="http://image.heitem.com/20170831150415275915317.png">
+            </div>
+            <mu-sub-header style="color:#ff5252">系统检测您暂未登录，请输入手机号进行下一步操作！</mu-sub-header>
+            <mu-sub-header>输入11位进入登录页，输入12位进入注册页！</mu-sub-header>
+            <mu-text-field iconClass="Phone-Input" v-model="PhoneNumber" type="number" icon="phone_iphone" labelFloat fullWidth/>
+            <mu-raised-button label="下一步" @click="login" secondary fullWidth />
+        </mu-content-block>
+    </mu-popup>
+    <mu-snackbar v-if="toast" message="请输入正确手机号(demo输入11位即可)" action="确定" @actionClick="hideToast" @close="hideToast"/>
+    <mu-paper class="Bottom-Nav-Class">
+    <mu-bottom-nav :value="bottomNav" @change="handleChange">
+        <mu-bottom-nav-item value="home" title="主页" icon="home" to="/home" />
+        <mu-bottom-nav-item value="favorites" title="图集" icon="collections" to="/atlas" />
+        <mu-float-button icon="add" @click="PuBliSh" />
+        <mu-bottom-nav-item value="more" title="更多" icon="shop_two" to="more"  />
+        <mu-bottom-nav-item value="user" title="我" icon="account_circle" />
+    </mu-bottom-nav>
+    </mu-paper>
+    <div class="seize-seat-bottom"></div>
 </div>
 </template>
 
@@ -19,6 +32,9 @@ export default {
   data () {
     return {
       bottomNav: 'home',
+      LoginBottom: false,
+      PhoneNumber: '',
+      toast: false,
     }
   },
   computed: {
@@ -26,29 +42,79 @@ export default {
           return this.$store.state.UserPhone;
       }
   },
+  watch: {
+      "$route": "BottomActive",
+  },
   created() {
-      const routePath = this.$route.path;
-      this.bottomNav = (routePath === '/home' && 'home') || (routePath === '/favorites' && 'favorites') || (routePath === '/more' && 'more') || (routePath === '/user' && 'user')
-      console.log(this.bottomNav)
+      this.BottomActive();
   },
   methods: {
     handleChange (val) {
-      this.bottomNav = val
+        if(val === 'user'){
+            this.GoUser();
+        }else{
+            this.bottomNav = val
+        }
     },
     PuBliSh (){
         console.log(this.PhoneValue)
         if(this.PhoneValue.length < '11'){
-            this.$router.push('/login')            
+            this.LoginBottom = true;         
         }else{
             this.$router.push('/publish')
         }
+    },
+    GoUser (){
+        if(this.PhoneValue.length < '11'){
+            this.LoginBottom = true;
+        }else{
+            this.$router.push('/user')
+        }
+    },
+    login () {
+        if(this.PhoneNumber.length >= '11'){
+            if(this.PhoneNumber.length > '11'){
+                sessionStorage.setItem('PhoneNumber', JSON.stringify(this.PhoneNumber))
+                this.$router.push('/register');
+            }else{
+                sessionStorage.setItem('PhoneNumber', JSON.stringify(this.PhoneNumber))
+                this.$router.push('/loginpassword');
+            }
+        }else{
+            this.toast = true
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+            this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
+        }
+    },
+    BottomActive(){
+        const routePath = this.$route.path;
+        this.bottomNav = (routePath === '/home' && 'home') || (routePath === '/favorites' && 'favorites') || (routePath === '/more' && 'more') || (routePath === '/user' && 'user')
+        console.log(this.bottomNav)
+    },
+    LoginBottomOpen(){
+        this.LoginBottom = true
+    },
+    LoginBottomClose(){
+        this.LoginBottom = false
+    },
+    hideToast () {
+        this.toast = false
+            if (this.toastTimer) clearTimeout(this.toastTimer)
     },
   }
 }
 </script>
 <<style lang="less">
+    .mu-text-field-content input{
+        color: #fff;
+    }
     .mu-bottom-item-active .mu-buttom-item-wrapper .mu-bottom-item-icon,.mu-bottom-item-active .mu-buttom-item-wrapper .mu-bottom-item-text{
         color: #ff5252;
+    }
+    .Login-popup-bottom{
+        margin-bottom: 56px;
+        width:100%;
+        background-color: #474a4f !important;
     }
 </style>
 
@@ -68,5 +134,31 @@ export default {
     }
     .mu-buttom-item{
         color: #fff;
+    }
+    .Login-Bottom{
+        text-align: center;
+    }
+    .Login-Bottom-Close{
+        position:fixed;
+        top: 0;
+        right: 0;
+        table-layout: fixed;
+        color: #9e9e9e;
+    }
+    .Login-Bottom-Icon{
+        display: inline-block;
+        margin: 0.5em;
+        height: 5em;
+        width: 5em;
+        border-radius:100px;
+        border:2px solid #fff;
+        background-color: #fff
+    }
+    .Login-Bottom-Icon img{
+        width: 100%;
+    }
+    .mu-sub-header{
+        line-height: 1.5em !important;
+        padding: 1em 0 1em 0;
     }
 </style>

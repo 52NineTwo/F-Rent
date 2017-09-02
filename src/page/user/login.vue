@@ -1,11 +1,11 @@
 <template>
     <div class="Login-Body">
-        <div class="top-button-icon">
+        <mu-appbar :title="Title_Data" class="Top-Class" titleClass="titleClass">
             <mu-icon-button icon="keyboard_arrow_left" slot="left" @click="RouterOne" />
-        </div>
+        </mu-appbar>
         <div class="input-class">
             <mu-paper v-bind:class="['demo-paper-two',{'demo-paper-one': UserIcon}]" circle :zDepth="3">
-                <mu-avatar v-bind:class="[{'Login-Button-Two': UserIcon}]" src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" />
+                <mu-avatar v-bind:class="[{'Login-Button-Two': UserIcon}]" src="http://image.heitem.com/20170902150430709426046.jpg" />
             </mu-paper>
             <mu-text-field iconClass="Phone-Input" style="color:#fff" :label="phoneLaBel" v-model="PhoneValue" @change="PhoneLaBel" type="number" icon="phone_iphone" labelFloat fullWidth/>
             <router-view></router-view>
@@ -25,10 +25,18 @@ export default {
       LoginEnd: false,
       UserIcon: true,
       toast: false,
+      Title_Data: '',
     }
   },
   created(){
       this.LoginEnd = (this.$route.path != '/login' && true) || false;
+      if(this.$route.path === '/loginpassword'){
+          this.Title_Data = '登录';
+      }else if(this.$route.path === '/loginpassword'){
+          this.Title_Data = '注册';
+      }
+      this.PhoneValue = JSON.parse(sessionStorage.getItem("PhoneNumber"));
+      this.phoneLaBel = '';
   },
   watch: {
       PhoneValue(curVal,oldVal){
@@ -76,6 +84,11 @@ export default {
 <style lang="less">
     .mu-text-field-content input{
         color: #fff;
+    }
+    .titleClass{
+        text-align:center;
+        font-size: 1.15em;
+        margin-right: 15.2%;
     }
 </style>
 <style scoped lang="less">

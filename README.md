@@ -16,6 +16,9 @@
 >
 >欢迎大佬们提出好的问题和点子，我会第一时间去修正。👍
 
+## 项目地址
+[GitHub](https://github.com/52NineTwo/F-Rent)
+
 ## 技术栈
 *  Vue2			[GitHub地址](https://github.com/vuejs/vue)
 *  Vuex			[GitHub地址](https://github.com/vuejs/vuex)
@@ -34,7 +37,7 @@
 #### Demo地址： [Demo](http://frent.heitem.com) (请使用Chrom手机模式预览)
 
 #### 手机扫一扫下面的二维码
-![QR Code](http://www.heitem.com/wp-content/uploads/2016/11/1504053404.png)
+![QR Code](http://ogjstwdiq.bkt.clouddn.com/20170831150415280545401.png)
 
 
 
@@ -79,14 +82,10 @@
 	- [x] 注册(完成)
 
 ## 截图
-#### 首页、登录
 ![首页](./demonstration/1.gif)
 ![登录](./demonstration/2.gif)
-#### 更多
 ![发现](./demonstration/4.gif)
 ![评论、标签](./demonstration/3.gif)
-
-#### 个人中心
 ![黑名单、关键字](./demonstration/6.gif)
 ![资料、发布关注](./demonstration/5.gif)
 

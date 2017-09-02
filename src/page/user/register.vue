@@ -24,15 +24,14 @@ export default {
       count: '',
       VeriCodeBtnLaBel: '获取验证码',
       timer: null,
+      PhoneNumber: '',
     }
   },
   created(){
       console.log(this.PhoneValue.length)
   },
-  computed: {
-      PhoneValue () {
-          return this.$store.state.UserPhone;
-      },
+  created() {
+      this.PhoneNumber = JSON.parse(sessionStorage.getItem("PhoneNumber"));
   },
   methods: {
       PassWord_LaBel () {
@@ -53,13 +52,14 @@ export default {
           this.$router.go(-1);
       },
       login() {
-          console.log(this.PhoneValue.length)
-          if(this.PhoneValue.length >= '11' && this.VeriCode.length > '1' && this.PassWordValue.length > '1'){
+          console.log(this.PhoneNumber.length)
+          if(this.PhoneNumber.length >= '11' && this.VeriCode.length > '1' && this.PassWordValue.length > '1'){
               if(this.VeriCode.length < '6'){
                   this.VeriCodetoast = true
                   if (this.toastTimer) clearTimeout(this.toastTimer)
                   this.toastTimer = setTimeout(() => { this.VeriCodetoast = false }, 2000)
               }else{
+                  this.$store.commit('LoginPhone',this.PhoneNumber)
                   this.$router.push('/user')
               }
           }else{

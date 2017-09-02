@@ -19,13 +19,14 @@ Vue.config.productionTip = false
 
 window.axios = axios;
 Vue.use(ImgLazyLoad, {
-  loading: require('./assets/ajax-loader.gif'),
+  //loading: require('./assets/ajax-loader.gif'),
+  loading: 'http://image.heitem.com/20170902150430671915806.gif',
   })
 axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 axios.defaults.autofaceURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 
 const router = new Router({
-  mode: 'history',
+  //mode: 'history',
   routes,
 })
 

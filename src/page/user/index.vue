@@ -1,11 +1,11 @@
 <template>
   <div>
-    <img src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" style="width:100%;position:fixed">
+    <img src="http://image.heitem.com/20170902150430709426046.jpg" style="width:100%;position:fixed">
     <div class="TempLate">
       <div class="User-Card-Zw"></div>
           <mu-card class="UserCard-Top">
               <mu-list-item to="/user/modifydata" class="Top-list-item" title="溯翎(郭维鹤)" describeText="这个人很懒，还没有什么留下">
-                <mu-avatar src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" slot="leftAvatar"/>
+                <mu-avatar src="http://image.heitem.com/20170902150430709426046.jpg" slot="leftAvatar"/>
                 <mu-icon value="account_circle" slot="right"/>
               </mu-list-item>
               <mu-flexbox>
@@ -61,13 +61,13 @@ export default {
   data () {
     return {
       bottomNav: 'user',
-      bottomNavColor: 'user'
+      bottomNavColor: 'user',
     }
   },
   created() {
       console.log(this.PhoneValue.length)
       if(this.PhoneValue.length < '11'){
-        this.$router.push('/login')
+        this.UserLoginBtn = true;
       }
   },
   computed: {
@@ -91,7 +91,7 @@ export default {
     },
     User_Follow(){
       this.$router.push('/user/follow')
-    }
+    },
   }
 }
 </script>

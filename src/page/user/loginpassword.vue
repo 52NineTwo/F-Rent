@@ -13,15 +13,14 @@ export default {
       PassWordValue: '',
       PassWordLaBel: '请输入您的密码',
       LoginBtn: '登录',
-      toast: false
+      toast: false,
+      PhoneNumber: '',
     }
   },
   mounted() {
   },
-  computed: {
-      PhoneValue () {
-          return this.$store.state.UserPhone;
-      }
+  created() {
+      this.PhoneNumber = JSON.parse(sessionStorage.getItem("PhoneNumber"));
   },
   methods: {
       PassWord_LaBel () {
@@ -36,6 +35,7 @@ export default {
               if (this.toastTimer) clearTimeout(this.toastTimer)
               this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
           }else{
+              this.$store.commit('LoginPhone',this.PhoneNumber)
               this.$router.push('/user');
           }
       },
