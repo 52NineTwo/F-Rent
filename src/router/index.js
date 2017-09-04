@@ -19,6 +19,7 @@ import DiscoVer      from '@/page/more/discover'
 import MoreLaBel     from '@/page/more/label'
 import InforMation   from '@/page/more/information'
 import RanKing       from '@/page/more/ranking'
+import OthErs        from '@/page/others/index'
 
 
 export default [
@@ -36,6 +37,7 @@ export default [
         {path: '/atlas',name: '图集',component: Atlas},
         {path: '/more',name: '更多',component: More},
         {path: '/user',name: '个人中心',component: User,},
+        {path: '/others/:name', name: '其他人的资料' ,component: OthErs}
       ]
     },
     { 

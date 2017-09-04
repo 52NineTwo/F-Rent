@@ -14,7 +14,7 @@
         <mu-sub-header>排行榜每日更新，每日0点可看到最新数据！</mu-sub-header>
         <ol class="Ranking_ol">
             <li v-for="item in active_datas" :key="item.name">
-                <mu-list-item :title="item.name">
+                <mu-list-item :title="item.name" @click="GoOthers(item.name)">
                     <mu-avatar :src="item.icon + item.urlid" slot="leftAvatar"/>
                     <span slot="describe">
                         截止{{item.time}}发布了{{item.number}}条帖子
@@ -28,7 +28,7 @@
         <mu-sub-header>排行榜每日更新，每日0点可看到最新数据！</mu-sub-header>
         <ol class="Ranking_ol">
             <li v-for="item in attention_datas" :key="item.name">
-                <mu-list-item :title="item.name">
+                <mu-list-item :title="item.name" @click="GoOthers(item.name)">
                     <mu-avatar :src="item.icon + item.urlid" slot="leftAvatar"/>
                     <span slot="describe">
                         截止{{item.time}}被{{item.number}}位小伙伴关注
@@ -42,7 +42,7 @@
         <mu-sub-header>排行榜每日更新，每日0点可看到最新数据！</mu-sub-header>
         <ol class="Ranking_ol">
             <li v-for="item in comment_datas" :key="item.name">
-                <mu-list-item :title="item.name">
+                <mu-list-item :title="item.name" @click="GoOthers(item.name)">
                     <mu-avatar :src="item.icon + item.urlid" slot="leftAvatar"/>
                     <span slot="describe">
                         截止{{item.time}}发布了{{item.number}}条评论
@@ -56,7 +56,7 @@
         <mu-sub-header>排行榜每日更新，每日0点可看到最新数据！</mu-sub-header>
         <ol class="Ranking_ol">
             <li v-for="item in dotpraise_datas" :key="item.name">
-                <mu-list-item :title="item.name">
+                <mu-list-item :title="item.name" @click="GoOthers(item.name)">
                     <mu-avatar :src="item.icon + item.urlid" slot="leftAvatar"/>
                     <span slot="describe">
                         截止{{item.time}}被{{item.number}}位小伙伴点赞
@@ -122,6 +122,9 @@
                 }
             })
         },  
+        GoOthers(name){
+            this.$router.push('/others/' + name);
+        }
     },
     }
 

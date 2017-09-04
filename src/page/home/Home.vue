@@ -8,8 +8,7 @@
         <mu-tab :value="LaBel_Type" :icon="LaBel_Icon" ref="LaBel" :title="'#' + LaBel_Name" @click="open('bottom')" />
     </mu-tabs>
     <mu-popup popupClass="home-popup-bottom" position="bottom" :open="bottomPopup" @close="close('bottom')">
-        <mu-appbar title="请选择标签">
-        <mu-flat-button slot="right" label="关闭" color="white" @click="close('bottom')"/></mu-appbar>
+        <mu-flat-button label="关闭" icon="clear" class="Login-Bottom-Close" @click="close('bottom')" /><Br />
         <mu-content-block>
             <mu-row>
                 <mu-col width="33" tablet="33" desktop="33" class="Label-border" v-for="item in LaBel_Data" :key="item.id" :value="activeTab">
@@ -325,6 +324,7 @@ export default {
     .home-popup-bottom{
         margin-bottom: 56px;
         width:100%;
+        background-color: #fafafa
     }
 </style>
 <style scoped lang="less">
@@ -388,6 +388,11 @@ export default {
         -webkit-flex: 1;
         flex: 1;
         width: 0%;
+    }
+    .Login-Bottom-Close{
+        position:fixed;
+        right: 0;
+        color: #9e9e9e;
     }
     img{
         transition:all 0.5s;

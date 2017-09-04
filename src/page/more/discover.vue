@@ -53,7 +53,7 @@
         <div v-bind:class="{'top-bottom-btn-zw': !TopBottom}" class="Content-card">
             <mu-card>
                 <img style="width:100%" :src="House_Data.icon + House_Data.urlid" />
-                <mu-list-item :title="House_Data.name" :describeText="'性别: ' + House_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
+                <mu-list-item @click="GoOthers(House_Data.name)" :title="House_Data.name" :describeText="'性别: ' + House_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
                     <mu-avatar :src="House_Data.icon + House_Data.urlid" slot="leftAvatar"/>
                     <mu-icon value="info" slot="right"/>
                 </mu-list-item>
@@ -94,7 +94,7 @@
         <div v-bind:class="{'top-bottom-btn-zw': !TopBottom}" class="Content-card">
             <mu-card>
                 <img style="width:100%" :src="Roomie_Data.icon + Roomie_Data.urlid" />
-                <mu-list-item :title="Roomie_Data.name" :describeText="'性别: ' + Roomie_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
+                <mu-list-item @click="GoOthers(Roomie_Data.name)" :title="Roomie_Data.name" :describeText="'性别: ' + Roomie_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
                     <mu-avatar :src="Roomie_Data.icon + Roomie_Data.urlid" slot="leftAvatar"/>
                     <mu-icon value="info" slot="right"/>
                 </mu-list-item>
@@ -130,7 +130,7 @@
         <div v-bind:class="{'top-bottom-btn-zw': !TopBottom}" class="Content-card">
             <mu-card>
                 <img style="width:100%" :src="Friend_Data.icon + Friend_Data.urlid" />
-                <mu-list-item :title="Friend_Data.name" :describeText="'性别: ' + Friend_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
+                <mu-list-item @click="GoOthers(Friend_Data.name)" :title="Friend_Data.name" :describeText="'性别: ' + Friend_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
                     <mu-avatar :src="Friend_Data.icon + Friend_Data.urlid" slot="leftAvatar"/>
                     <mu-icon value="info" slot="right"/>
                 </mu-list-item>
@@ -161,7 +161,7 @@
         <div v-bind:class="{'top-bottom-btn-zw': !TopBottom}" class="Content-card">
             <mu-card>
                 <img style="width:100%" :src="Unused_Data.icon + Unused_Data.urlid" />
-                <mu-list-item :title="Unused_Data.name" :describeText="'性别: ' + Unused_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
+                <mu-list-item @click="GoOthers(Unused_Data.name)" :title="Unused_Data.name" :describeText="'性别: ' + Unused_Data.gender + ' ' + '-' + ' ' + '爱好: ' + Roomie_Data.hobby">
                     <mu-avatar :src="Unused_Data.icon + Unused_Data.urlid" slot="leftAvatar"/>
                     <mu-icon value="info" slot="right"/>
                 </mu-list-item>
@@ -320,6 +320,9 @@ const address = {
         GenDerSheet (gender) {
             this.gender = gender;
         },
+        GoOthers(name){
+            this.$router.push('/others/' + name);
+        }
     },
     }
 
