@@ -1,0 +1,22 @@
+{
+  success: true,
+  data: {
+    "gender|1": ["男", "女"],
+    "id|10-100": 100,
+    "background": "http://placeimg.com/640/480/any?id=",
+    "icon": "http://placeimg.com/244/132/any",
+    "label|1": ["租房、室友", "出租、朋友", "室友、朋友", "租房、朋友"],
+    "profile|1": ["@csentence", "这个人很懒，什么都没有留下"],
+    "recently|3-6": [{
+      "title": "@csentence",
+      "time": "@datetime",
+      "label|1": ["独卫", "男室友", "女室友", "晒房", "反馈", "闲聊", "闲置", "交友", "独卫", ]
+    }],
+    "attention|1": ["person_add", "person_outline"],
+    name: function({
+      _req
+    }) {
+      return _req.query.name;
+    }
+  }
+}

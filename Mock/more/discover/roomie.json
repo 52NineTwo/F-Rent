@@ -1,0 +1,1 @@
+{  "data":{      "id|100-10000": 10000,      "name": "@cname",      "time": "@now(MM-dd)",      "gender|1": ["男", "女"],      "signature|1": ["@csentence", "这个人很懒，还什么都没留下呢！"],      "hobby|1": ["打游戏", "逛街", "听歌", "追剧", "吃！", "健身", "篮球", "足球", "看书"],      "icon": "https://unsplash.it/480/240/?random&id=",      "urlid|1-100": 100,      "number|50-500": 500,    }}
