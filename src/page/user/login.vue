@@ -5,9 +5,12 @@
         </mu-appbar>
         <div class="input-class">
             <mu-paper v-bind:class="['demo-paper-two',{'demo-paper-one': UserIcon}]" circle :zDepth="3">
-                <mu-avatar v-bind:class="[{'Login-Button-Two': UserIcon}]" src="http://image.heitem.com/20170902150430709426046.jpg" />
+                <mu-avatar v-if="this.$route.path === '/loginpassword'" v-bind:class="[{'Login-Button-Two': UserIcon}]" :src="User_Datas.icon + User_Datas.id" />
+                <mu-avatar v-else v-bind:class="[{'Login-Button-Two': UserIcon}]" src="http://image.heitem.com/20170831150415275915317.png" />
             </mu-paper>
-            <mu-text-field iconClass="Phone-Input" style="color:#fff" :label="phoneLaBel" v-model="PhoneValue" @change="PhoneLaBel" type="number" icon="phone_iphone" labelFloat fullWidth/>
+            <mu-sub-header v-show="Welcome" style="color:#ff5252">{{Welcome}}</mu-sub-header>
+            <mu-sub-header style="color:#fff">{{Welcome_Bottom}}</mu-sub-header>
+            <mu-text-field v-show="PhoneInputShow" iconClass="Phone-Input" style="color:#fff" :label="phoneLaBel" v-model="PhoneValue" @change="PhoneLaBel" type="number" icon="phone_iphone" labelFloat fullWidth/>
             <router-view></router-view>
             <mu-raised-button @click="login()" :label="LoginBtn" v-bind:class="['Login-Button-One',{'Login-Button-Two': LoginEnd}]" secondary fullWidth/>
         </div>  
@@ -26,17 +29,29 @@ export default {
       UserIcon: true,
       toast: false,
       Title_Data: '',
+      LoginName: '溯翎',
+      PhoneInputShow: true,
+      Welcome: '',
+      Welcome_Bottom: '',
+      User_Datas: {},
     }
   },
   created(){
+      this.User_Datas = JSON.parse(sessionStorage.getItem("User_Data"));
+      this.PhoneValue = JSON.parse(sessionStorage.getItem("PhoneNumber"));
+      this.phoneLaBel = '';
       this.LoginEnd = (this.$route.path != '/login' && true) || false;
       if(this.$route.path === '/loginpassword'){
           this.Title_Data = '登录';
-      }else if(this.$route.path === '/loginpassword'){
+          this.Welcome = '亲爱的' + this.User_Datas.name +'欢迎回来！';
+          this.Welcome_Bottom = '你的登录账号是：' + this.User_Datas.phone;
+          this.PhoneInputShow = false;
+      }else if(this.$route.path === '/register'){
           this.Title_Data = '注册';
+          this.Welcome = '您还未注册，请进行下一步操作'
+          this.Welcome_Bottom = '你的注册账号是：' + this.User_Datas.phone;
+          this.PhoneInputShow = false;
       }
-      this.PhoneValue = JSON.parse(sessionStorage.getItem("PhoneNumber"));
-      this.phoneLaBel = '';
   },
   watch: {
       PhoneValue(curVal,oldVal){
@@ -136,5 +151,10 @@ export default {
     .demo-paper-two .mu-avatar{
         height: 100px;
         width: 100px;
+    }
+    .mu-sub-header{
+        line-height: 1.5em !important;
+        padding: 0em 0 1em 0;
+        font-size: 1em;
     }
 </style>

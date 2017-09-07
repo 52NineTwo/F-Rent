@@ -7,12 +7,12 @@
     <mu-card v-for="(item,index) in information_datas" :key="item.id">
             <mu-list-item v-if="item.name != '溯翎'" class="Top-list-item" :title="item.name + ' | ' + '#' + item.type" :describeText="item.date">
                 <mu-avatar :src="item.icon + item.iconid" slot="leftAvatar"/>
-                <mu-icon value="keyboard_arrow_down" slot="right" @click="openBottomSheet(item.hename,index)" />
+                <mu-icon value="keyboard_arrow_down" slot="right" @click="openBottomSheet(item.hename,index,item.name)" />
                 </mu-icon-menu>
             </mu-list-item>
             <mu-list-item v-else class="Top-list-item" :title="'我' + ' | ' + '#' + item.type" :describeText="item.date">
-                <mu-avatar src="http://www.heitem.com/wp-content/uploads/2016/11/icon.jpg" slot="leftAvatar"/>
-                <mu-icon value="keyboard_arrow_down" slot="right" @click="openBottomSheet(item.hename,index)" />
+                <mu-avatar src="http://image.heitem.com/20170831150415508632988.jpg" slot="leftAvatar"/>
+                <mu-icon value="keyboard_arrow_down" slot="right" @click="openBottomSheet(item.hename,index,'自己')" />
                 </mu-icon-menu>
             </mu-list-item>
             <mu-card-text>
@@ -63,6 +63,7 @@
         <mu-flat-button slot="actions" @click="delatClose" primary label="取消"/>
         <mu-flat-button slot="actions" primary @click="delat_Close" label="确定"/>
     </mu-dialog>
+    <mu-snackbar v-if="toast" :message="InformationToast" action="确定" @actionClick="hideToast" @close="hideToast"/>
 </div>
 </template>
 <script>
@@ -77,6 +78,9 @@
             block_switch: true,
             searchShow: true,
             delData: '',
+            InformationToast: '',
+            toast: false,
+            Delat_Name: '',
         }
     },
     created() {
@@ -99,10 +103,11 @@
         closeBottomSheet () {
             this.bottomSheet = false
         },
-        openBottomSheet (name,index) {
+        openBottomSheet (name,index,uname) {
             this.bottomSheet = true
             this.block_name = name
             this.delData = index
+            this.Delat_Name = uname
         },
         delatOpen(index) {
             this.delclose = true
@@ -123,7 +128,18 @@
             const index = this.delData;
             this.information_datas.splice(index,1);
             this.delclose = false;
-        }
+            this.InformationToast = '成功删除' + this.Delat_Name + '的评论';
+            this.InformationToastOpen();
+        },
+        hideToast () {
+            this.toast = false
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+        },
+        InformationToastOpen(){
+            this.toast = true
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+            this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
+        },
     },
     }
 

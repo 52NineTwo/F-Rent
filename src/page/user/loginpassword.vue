@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mu-text-field :label="PassWordLaBel" v-model="PassWordValue" @change="PassWord_LaBel" type="number" icon="lock_outline" labelFloat fullWidth/>
+        <mu-text-field :label="PassWordLaBel" v-model="PassWordValue" @change="PassWord_LaBel" type="password" icon="lock_outline" labelFloat fullWidth/>
         <mu-raised-button @click="login()" :label="LoginBtn" class="Login-Button-One" secondary fullWidth/>
         <mu-snackbar v-if="toast" message="请输入密码(demo随便输入)" action="确定" @actionClick="hideToast" @close="hideToast"/>
     </div>

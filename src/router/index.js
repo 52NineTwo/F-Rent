@@ -21,7 +21,6 @@ import InforMation   from '@/page/more/information'
 import RanKing       from '@/page/more/ranking'
 import OthErs        from '@/page/others/index'
 
-
 export default [
     {
       path: '/',

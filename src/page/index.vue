@@ -13,7 +13,7 @@
             <mu-raised-button label="下一步" @click="login" secondary fullWidth />
         </mu-content-block>
     </mu-popup>
-    <mu-snackbar v-if="toast" message="请输入正确手机号(demo输入11位即可)" action="确定" @actionClick="hideToast" @close="hideToast"/>
+    <mu-snackbar v-if="toast" :message="indexToast" action="确定" @actionClick="hideToast" @close="hideToast"/>
     <mu-paper class="Bottom-Nav-Class">
     <mu-bottom-nav :value="bottomNav" @change="handleChange">
         <mu-bottom-nav-item value="home" title="主页" icon="home" to="/home" />
@@ -35,6 +35,7 @@ export default {
       LoginBottom: false,
       PhoneNumber: '',
       toast: false,
+      indexToast: '',
     }
   },
   computed: {
@@ -72,19 +73,35 @@ export default {
         }
     },
     login () {
+        axios.get('/login?phone=' + this.PhoneNumber)
+        .then(res => {
+            if(res.status === 200){
+                console.log(res.data.data)
+                sessionStorage.setItem("User_Data", JSON.stringify(res.data.data));
+            }
+        })
         if(this.PhoneNumber.length >= '11'){
             if(this.PhoneNumber.length > '11'){
+                this.indexToast = '您还未注册，即将前往注册页';
+                this.IndexToastOpen();
                 sessionStorage.setItem('PhoneNumber', JSON.stringify(this.PhoneNumber))
-                this.$router.push('/register');
+                setTimeout(() => { this.$router.push('/register');}, 2000)
             }else{
+                this.indexToast = '欢迎回来，即将前往登录页';
+                this.IndexToastOpen();
                 sessionStorage.setItem('PhoneNumber', JSON.stringify(this.PhoneNumber))
-                this.$router.push('/loginpassword');
+                setTimeout(() => {this.$router.push('/loginpassword');}, 2000)
+                
             }
         }else{
-            this.toast = true
-            if (this.toastTimer) clearTimeout(this.toastTimer)
-            this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
+            this.indexToast = '请输入正确手机号';
+            this.IndexToastOpen();
         }
+    },
+    IndexToastOpen(){
+        this.toast = true
+        if (this.toastTimer) clearTimeout(this.toastTimer)
+        this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
     },
     BottomActive(){
         const routePath = this.$route.path;

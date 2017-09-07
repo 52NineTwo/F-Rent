@@ -276,6 +276,12 @@ export default {
       },
       LoginData () {
           const active_Tab = this.activeTab;
+          const active_Tab_CN = (active_Tab === 'colligate' && '综合') || (active_Tab === 'seekrent' && '求租') || (active_Tab === 'Arent' && '出租') || (active_Tab === 'roommate' && '室友') || (active_Tab === 'singwei' && '独卫') || (active_Tab === 'manchum' && '男室友') || (active_Tab === 'girlchum' && '女室友')
+                         || (active_Tab === 'sumroom' && '晒房') || (active_Tab === 'feedback' && '反馈') || (this.LaBel_Type === 'gossip' && '闲聊')
+                         || (active_Tab === 'lieidle' && '闲置') || (active_Tab === 'makefriends' && '交友')
+          if(active_Tab != ''){
+              this.$loading(active_Tab_CN + '话题正在' +'载入中...');
+            }
           axios.get(this.activeTab)
             .then(res => {
             if(res.status === 200) {
@@ -293,10 +299,17 @@ export default {
                 }
                 this.refreshing = false;
             }
+            let self = this;
+	        setTimeout(function () {
+	          self.closeLoading()
+	        }, 2000)
             })
       },
     handleTabChange (val) {
         this.activeTab = val;
+    },
+    closeLoading(){
+            this.$loading.close();
     },
     handleChange (val) {
         this.bottomNav = val;

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <img src="http://image.heitem.com/20170902150430709426046.jpg" style="width:100%;position:fixed">
+    <img :src="User_Datas.background" style="width:100%;position:fixed">
     <div class="TempLate">
       <div class="User-Card-Zw"></div>
           <mu-card class="UserCard-Top">
-              <mu-list-item to="/user/modifydata" class="Top-list-item" title="溯翎(郭维鹤)" describeText="这个人很懒，还没有什么留下">
-                <mu-avatar src="http://image.heitem.com/20170902150430709426046.jpg" slot="leftAvatar"/>
+              <mu-list-item to="/user/modifydata" class="Top-list-item" :title="User_Datas.nickname + '(' + User_Datas.name + ')'" :describeText="User_Datas.profile">
+                <mu-avatar :src="User_Datas.icon + User_Datas.id" slot="leftAvatar"/>
                 <mu-icon value="account_circle" slot="right"/>
               </mu-list-item>
               <mu-flexbox>
@@ -62,9 +62,11 @@ export default {
     return {
       bottomNav: 'user',
       bottomNavColor: 'user',
+      User_Datas: {},
     }
   },
   created() {
+      this.User_Datas = JSON.parse(sessionStorage.getItem("User_Data"));
       console.log(this.PhoneValue.length)
       if(this.PhoneValue.length < '11'){
         this.UserLoginBtn = true;

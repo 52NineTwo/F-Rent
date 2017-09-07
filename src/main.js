@@ -11,8 +11,10 @@ import ImgLazyLoad from 'vue-lazyload'
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-carbon.css'
+import Toast from './components/Toast.js'
+import './components/Toast.css'
 
-
+Vue.use(Toast)
 Vue.use(Router)
 Vue.use(MuseUi)
 Vue.config.productionTip = false
@@ -26,7 +28,7 @@ axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf443
 axios.defaults.autofaceURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 
 const router = new Router({
-  //mode: 'history',
+  mode: 'history',
   routes,
 })
 
