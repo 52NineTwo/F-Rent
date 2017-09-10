@@ -5,7 +5,7 @@ import Loginpassword from '@/page/user/loginpassword'
 import Power         from '@/page/user/power'
 import Register      from '@/page/user/register'
 import Publish       from '@/page/publish/index'
-import Atlas         from '@/page/atlas/index'
+import Atlas         from '@/page/Exhibition/atlas'
 import More          from '@/page/more/index'
 import keyWord       from '@/page/user/keyword'
 import BlackList     from '@/page/user/blacklist'
@@ -20,6 +20,8 @@ import MoreLaBel     from '@/page/more/label'
 import InforMation   from '@/page/more/information'
 import RanKing       from '@/page/more/ranking'
 import OthErs        from '@/page/others/index'
+import exhibition    from '@/page/Exhibition/home'
+import Topic         from '@/page/Exhibition/topic'
 
 export default [
     {
@@ -33,10 +35,10 @@ export default [
       component: HomeIndex,
       children: [
         {path: '/home',name: '主页', component: Home},
-        {path: '/atlas',name: '图集',component: Atlas},
         {path: '/more',name: '更多',component: More},
         {path: '/user',name: '个人中心',component: User,},
-        {path: '/others/:name', name: '其他人的资料' ,component: OthErs}
+        {path: '/others/:name', name: '其他人的资料' ,component: OthErs},
+        {path: '/exhibition', name: '展集',component: exhibition}
       ]
     },
     { 
@@ -61,4 +63,6 @@ export default [
     {path: '/more/information', name: '收到的评论',   component: InforMation},
     {path: '/more/label',       name: '分类及标签',   component: MoreLaBel},
     {path: '/more/ranking',     name: '数据排行榜',   component: RanKing},
+    {path: '/exhibition/atlas', name: '图集',        component: Atlas},
+    {path: '/exhibition/topic', name: '本周话题',    component: Topic},
   ]

@@ -17,9 +17,9 @@
     <mu-paper class="Bottom-Nav-Class">
     <mu-bottom-nav :value="bottomNav" @change="handleChange">
         <mu-bottom-nav-item value="home" title="主页" icon="home" to="/home" />
-        <mu-bottom-nav-item value="favorites" title="图集" icon="collections" to="/atlas" />
+        <mu-bottom-nav-item value="exhibition" title="展集" icon="collections" to="/exhibition" />
         <mu-float-button icon="add" @click="PuBliSh" />
-        <mu-bottom-nav-item value="more" title="更多" icon="shop_two" to="more"  />
+        <mu-bottom-nav-item value="more" title="更多" icon="explore" to="more"  />
         <mu-bottom-nav-item value="user" title="我" icon="account_circle" />
     </mu-bottom-nav>
     </mu-paper>
@@ -105,7 +105,7 @@ export default {
     },
     BottomActive(){
         const routePath = this.$route.path;
-        this.bottomNav = (routePath === '/home' && 'home') || (routePath === '/favorites' && 'favorites') || (routePath === '/more' && 'more') || (routePath === '/user' && 'user')
+        this.bottomNav = (routePath === '/home' && 'home') || (routePath === '/exhibition' && 'exhibition') || (routePath === '/more' && 'more') || (routePath === '/user' && 'user')
         console.log(this.bottomNav)
     },
     LoginBottomOpen(){

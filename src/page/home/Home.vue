@@ -1,5 +1,8 @@
 <template>
 <div>
+    <mu-back-top :bottom="80" :right="15" :duration="1000">
+        <mu-float-button icon="keyboard_arrow_up"/>
+    </mu-back-top>
     <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="colligate" icon="domain" title="综合"/>
         <mu-tab value="seekrent" icon="visibility" title="求租"/>
