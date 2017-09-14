@@ -22,7 +22,7 @@
     </mu-popup>
     <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="PullTop"/>
         <div v-if="activeTab === 'colligate'" class="seize-seat-top">
-            <mu-card v-for="item in colligate" :key="item.id">
+            <mu-card v-for="item in colligate" :key="item.id" @click="GoDetails(item.name)">
                 <mu-card-header :title="item.name + ' | ' + '#' + item.type" :subTitle="item.date">
                     <mu-avatar :src="item.icon + item.see" slot="avatar"/>
                 </mu-card-header>
@@ -31,8 +31,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item v-for="items in item.url" :key="items.id" >
-                        <img v-lazy="items.name + item.urlid">
+                    <mu-flexbox-item v-for="(items,index) in item.url" :key="items.id" >
+                        <img v-lazy="items.name + item.urlid" @click=photoswipe(item.url,index)>
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -59,7 +59,7 @@
             </mu-card>
         </div>
         <div v-if="activeTab === 'seekrent'" class="seize-seat-top">
-            <mu-card v-for="item in seekrent" :key="item.id">
+            <mu-card v-for="item in seekrent" :key="item.id" @click="GoDetails(item.name)">
                 <mu-card-header :title="item.name + ' | ' + '#' + item.type" :subTitle="item.date">
                     <mu-avatar :src="item.icon + item.see" slot="avatar"/>
                 </mu-card-header>
@@ -68,8 +68,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1">
+                    <mu-flexbox-item class="flex-demo" v-for="(items,index) in item.url" :key="items.id" >
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1" @click=photoswipe(item.url,index)>
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -105,8 +105,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1">
+                    <mu-flexbox-item class="flex-demo" v-for="(items,index) in item.url" :key="items.id" >
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1" @click=photoswipe(item.url,index)>
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -142,8 +142,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1">
+                    <mu-flexbox-item class="flex-demo" v-for="(items,index) in item.url" :key="items.id" >
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1" @click=photoswipe(item.url,index)>
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -179,8 +179,8 @@
                     <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
                 </mu-card-text>
                 <mu-flexbox>
-                    <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
-                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1">
+                    <mu-flexbox-item class="flex-demo" v-for="(items,index) in item.url" :key="items.id" >
+                        <img class="mu-col-img" v-lazy="items.name + item.urlid" :zDepth="1" @click=photoswipe(item.url,index)>
                     </mu-flexbox-item>
                 </mu-flexbox>
                 <mu-row  class="card-bottom">
@@ -305,7 +305,7 @@ export default {
             let self = this;
 	        setTimeout(function () {
 	          self.closeLoading()
-	        }, 2000)
+	        }, 1000)
             })
       },
     handleTabChange (val) {
@@ -333,6 +333,15 @@ export default {
     CardFavorite(fabulous) {
         this.card_bottom_favorite = fabulous;
     },
+    GoDetails(name){
+        this.$router.push('/details/' + name);
+    },
+	photoswipe(items,index){
+		this.$photoswipe({
+			items:items,
+			index:index
+		});
+	}
   }
 }
 </script>

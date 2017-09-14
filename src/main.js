@@ -13,10 +13,14 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-carbon.css'
 import Toast from './components/Toast.js'
 import './components/Toast.css'
+import 'photoswipe/dist/default-skin/default-skin.css'
+
+import photoswipe from './components/photoswipe.js'
 
 Vue.use(Toast)
 Vue.use(Router)
 Vue.use(MuseUi)
+Vue.use(photoswipe)
 Vue.config.productionTip = false
 
 window.axios = axios;

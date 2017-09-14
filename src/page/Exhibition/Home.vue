@@ -1,6 +1,6 @@
 <template>
   <div>
-      <mu-appbar title="展集" class="Top-Class" titleClass="titleclass" />
+      <mu-appbar title="展集" class="Top-Class" />
       <div class="seize-seat-top"></div>
       <slider
       :pagination-visible="true"
@@ -81,17 +81,14 @@ export default {
   }
 }
 </script>
-<style lang="less">
-  .titleclass{
-      font-size: 1.2em;
-      text-align: center;
-  }
-</style>
+
 <style scoped lang="less">
   .Top-Class{
       position:fixed;
       top: 0;
       box-shadow: 0px 0px 0px !important;
+      text-align: center;
+      font-size: 1.2em;
   }
   .seize-seat-top{
       height: 56px;

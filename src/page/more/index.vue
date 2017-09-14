@@ -1,6 +1,6 @@
 <template>
 <div>
-    <mu-appbar title="更多" class="Top-Class" titleClass="titleclass" />
+    <mu-appbar title="更多" class="Top-Class"  />
     <div class="seize-seat-top"></div>
     <mu-list-item to="/more/information" class="More_list" title="收到的评论" describeText="来自大佬们对你话题的评论">
       <mu-badge style="margin-top:1em" content="10" slot="left" class="demo-icon-badge" circle secondary>
@@ -35,13 +35,6 @@ export default {
     }
 }
 </script>
-<style lang="less">
-    .titleclass{
-        font-size: 1.2em;
-        text-align: center;
-        margin-right: 10%;
-    }
-</style>
 <style scoped lang="less">
     .More_list{
         background-color: #fff;
@@ -54,6 +47,8 @@ export default {
         position:fixed;
         top: 0;
         padding: 0;
+        text-align: center;
+        font-size: 1.2em;
     }
     .seize-seat-top{
         height: 56px;
