@@ -22,7 +22,7 @@
     </mu-popup>
     <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="PullTop"/>
         <div v-if="activeTab === 'colligate'" class="seize-seat-top">
-            <mu-card v-for="item in colligate" :key="item.id">
+            <mu-card v-for="item in colligate" :key="item.id" @click="GoDetails(item.name)">
                 <mu-card-header :title="item.name + ' | ' + '#' + item.type" :subTitle="item.date">
                     <mu-avatar :src="item.icon + item.see" slot="avatar"/>
                 </mu-card-header>
@@ -59,7 +59,7 @@
             </mu-card>
         </div>
         <div v-if="activeTab === 'seekrent'" class="seize-seat-top">
-            <mu-card v-for="item in seekrent" :key="item.id">
+            <mu-card v-for="item in seekrent" :key="item.id" @click="GoDetails(item.name)">
                 <mu-card-header :title="item.name + ' | ' + '#' + item.type" :subTitle="item.date">
                     <mu-avatar :src="item.icon + item.see" slot="avatar"/>
                 </mu-card-header>
@@ -305,7 +305,7 @@ export default {
             let self = this;
 	        setTimeout(function () {
 	          self.closeLoading()
-	        }, 2000)
+	        }, 1000)
             })
       },
     handleTabChange (val) {
@@ -333,6 +333,9 @@ export default {
     CardFavorite(fabulous) {
         this.card_bottom_favorite = fabulous;
     },
+    GoDetails(name){
+        this.$router.push('/details/' + name);
+    }
   }
 }
 </script>

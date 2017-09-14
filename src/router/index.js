@@ -22,6 +22,7 @@ import RanKing       from '@/page/more/ranking'
 import OthErs        from '@/page/others/index'
 import exhibition    from '@/page/Exhibition/home'
 import Topic         from '@/page/Exhibition/topic'
+import DetaIls       from '@/page/home/details'
 
 export default [
     {
@@ -65,4 +66,5 @@ export default [
     {path: '/more/ranking',     name: '数据排行榜',   component: RanKing},
     {path: '/exhibition/atlas', name: '图集',        component: Atlas},
     {path: '/exhibition/topic', name: '本周话题',    component: Topic},
+    {path: '/details/:name',    name: '详情页',      component: DetaIls}
   ]
