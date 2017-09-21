@@ -7,8 +7,6 @@ export default {
 		
 		Vue.prototype.$photoswipe = function(options){
 			var PhotoSwipe = require("photoswipe");	
-			
-			
 				var loadTpl = Vue.extend({
 					data: function () {
 						return {
@@ -19,6 +17,7 @@ export default {
 					methods:{
 						delPhotoswipe(){
 						  this.show = false;
+						  gallery = null;
 						}
 					}
 				});	
@@ -41,16 +40,20 @@ export default {
 				for (var property in options) {
 					opt[property] = options[property];
 				}
-				
-				var items = opt.items;
-				items.forEach(function(item,i){
-					items[i]={
-						src: item.name,
+				try{
+					var _items=opt.items.slice(0);
+				}catch(e){
+					console.error(e.message);
+					return;
+				}
+				_items.forEach(function(item,i){
+					_items[i]={
+						src: item.name+opt.urlid,
 						w: 600,
 						h: 400
 					}
 				});
-				gallery = new PhotoSwipe( pswpElement, PhotoSwipe.PhotoSwipeUI_Default, items, opt);
+				gallery = new PhotoSwipe( pswpElement, PhotoSwipe.PhotoSwipeUI_Default, _items, opt);
 				setTimeout(function(){
 					gallery.init();		
 				},300);
