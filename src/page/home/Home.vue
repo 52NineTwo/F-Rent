@@ -335,6 +335,7 @@ export default {
     },
     GoDetails(name){
         this.$router.push('/details/' + name);
+
     },
 	photoswipe(items,index){
 		this.$photoswipe({
