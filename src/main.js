@@ -27,8 +27,7 @@ window.axios = axios;
 Vue.use(ImgLazyLoad, {
   loading: 'http://image.heitem.com/timg.gif',
   listenEvents: ['scroll']
-  });
-
+  })
 axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 axios.defaults.autofaceURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
 
