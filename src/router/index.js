@@ -24,6 +24,15 @@ import exhibition    from '@/page/Exhibition/home'
 import Topic         from '@/page/Exhibition/topic'
 import DetaIls       from '@/page/home/details'
 
+import PCindex       from '@/page/PC/index'
+import PcHome        from '@/page/PC/home/home'
+import PcHomeColligate from '@/page/PC/home/colligate'
+import PcHomeArent from '@/page/PC/home/Arent'
+import PcHomeroommate from '@/page/PC/home/roommate'
+import PcHomeseekrent from '@/page/PC/home/seekrent'
+import PcHomeDetails  from '@/page/PC/home/details'
+import PcExhibition   from '@/page/PC/Exhibition/Home'
+
 export default [
     {
       path: '/',
@@ -66,5 +75,27 @@ export default [
     {path: '/more/ranking',     name: '数据排行榜',   component: RanKing},
     {path: '/exhibition/atlas', name: '图集',        component: Atlas},
     {path: '/exhibition/topic', name: '本周话题',    component: Topic},
-    {path: '/details/:name',    name: '详情页',      component: DetaIls}
+    {path: '/details/:name',    name: '详情页',      component: DetaIls},
+
+    {
+      path: '/PCHOME',
+      component: PCindex,
+      name: '顶部导航',
+      children: [
+        {
+          path: '/Pcindex', 
+          redirect:{ path:'/Pcindex/colligate' },
+          component: PcHome,
+          name: 'IndexLeft',
+          children:[
+            {path: '/Pcindex/colligate', name: '首页综合', component: PcHomeColligate},
+            {path: '/Pcindex/Arent', name: '首页出租', component: PcHomeArent},
+            {path: '/Pcindex/roommate', name: '首页室友', component: PcHomeroommate},
+            {path: '/Pcindex/seekrent', name: '首页求租', component: PcHomeseekrent},
+          ]
+        },
+        {path: '/PcDetails/:article_id', name: '文章详情页', component: PcHomeDetails},
+        {path: '/PcExhibition', name: 'Pc展集页', component: PcExhibition},
+      ]
+    }
   ]

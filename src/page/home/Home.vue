@@ -1,7 +1,7 @@
 <template>
 <div>
     <mu-back-top :bottom="80" :right="15" :duration="1000">
-        <mu-float-button icon="keyboard_arrow_up"/>
+        <mu-float-button icon="arrow_upward"/>
     </mu-back-top>
     <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="colligate" icon="domain" title="综合"/>
@@ -99,37 +99,22 @@
             <mu-card v-for="item in Arent" :key="item.id">
                 <mu-card-header :title="item.name + ' | ' + '#' + item.type" :subTitle="item.date">
                     <mu-avatar :src="item.icon + item.see" slot="avatar"/>
+                    <div class="card-bottom-data" style="color:red;font-size:1.5em;position:absolute;right:3%;top:13%;">
+                        <p>￥{{item.comment}}</p>
+                    </div>
+                    <div class="card-bottom-data" style="position:absolute;left:50%;top:20%;">
+                        <mu-icon value="location_on" class="card-bottom-icon" :size="20"/>
+                        <p>{{item.see}}</p>
+                    </div>
                 </mu-card-header>
-                <mu-card-text>
-                    {{item.source}}
-                    <mu-badge  class="demo-badge-content">#{{item.label}}</mu-badge>
-                </mu-card-text>
                 <mu-flexbox>
                     <mu-flexbox-item class="flex-demo" v-for="items in item.url" :key="items.id" >
                         <img class="mu-col-img" v-lazy="items.name + item.urlid"  :zDepth="1">
                     </mu-flexbox-item>
                 </mu-flexbox>
-                <mu-row  class="card-bottom">
-                    <mu-col width="60" tablet="50" desktop="50">
-                        <div class="card-bottom-data">
-                            <mu-icon value="remove_red_eye" class="card-bottom-icon" :size="20"/>
-                            <p>{{item.see}}</p>
-                        </div>
-                    </mu-col>
-                    <mu-col width="20" tablet="25" desktop="25">
-                        <div class="card-bottom-data" @click="CardFavorite(item.fabulous)">
-                            <mu-icon v-if="card_bottom_favorite === item.fabulous" value="favorite" class="card-bottom-icon" :size="20"/>
-                            <mu-icon v-else value="favorite_border" class="card-bottom-icon" :size="20"/>
-                            <p>{{item.fabulous}}</p>
-                        </div>
-                    </mu-col>
-                    <mu-col width="20" tablet="25" desktop="25">
-                        <div class="card-bottom-data">
-                            <mu-icon value="chat" class="card-bottom-icon" :size="20"/>
-                            <p>{{item.comment}}</p>
-                        </div>
-                    </mu-col>
-                </mu-row>
+                <mu-card-text>
+                    {{item.source}}
+                </mu-card-text>
             </mu-card>
         </div>
         <div v-if="activeTab === 'roommate'" class="seize-seat-top">
@@ -343,7 +328,7 @@ export default {
     .home-popup-bottom{
         margin-bottom: 56px;
         width:100%;
-        background-color: #fafafa
+        background-color: #fafafa;
     }
 </style>
 <style scoped lang="less">
