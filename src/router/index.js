@@ -24,14 +24,26 @@ import exhibition    from '@/page/Exhibition/home'
 import Topic         from '@/page/Exhibition/topic'
 import DetaIls       from '@/page/home/details'
 
-import PCindex       from '@/page/PC/index'
-import PcHome        from '@/page/PC/home/home'
+import PCindex         from '@/page/PC/index'
+import PcHome          from '@/page/PC/home/home'
 import PcHomeColligate from '@/page/PC/home/colligate'
-import PcHomeArent from '@/page/PC/home/Arent'
-import PcHomeroommate from '@/page/PC/home/roommate'
-import PcHomeseekrent from '@/page/PC/home/seekrent'
-import PcHomeDetails  from '@/page/PC/home/details'
-import PcExhibition   from '@/page/PC/Exhibition/Home'
+import PcHomeArent     from '@/page/PC/home/Arent'
+import PcHomeroommate  from '@/page/PC/home/roommate'
+import PcHomeseekrent  from '@/page/PC/home/seekrent'
+import PcHomeDetails   from '@/page/PC/home/details'
+import PcExhibition    from '@/page/PC/Exhibition/Home'
+import PcUser          from '@/page/PC/user/index'
+import PcUserRelease   from '@/page/PC/user/Release'
+import PcReleaseTpl    from '@/page/PC/user/postTplData'
+import PcReleaseColl   from '@/page/PC/user/collection'
+import PcReleaseComm   from '@/page/PC/user/comments'
+import PcReleaseSupp   from '@/page/PC/user/supported'
+import PcUserSetting   from '@/page/PC/user/setting'
+import PcSettingData   from '@/page/PC/user/Personal'
+import PcSettingPhone  from '@/page/PC/user/PhoneContry'
+import PcSettingBlack  from '@/page/PC/user/BlackList'
+import PcSettingKey    from '@/page/PC/user/keyword'
+import PcReleaseFocus  from '@/page/PC/user/Focus'
 
 export default [
     {
@@ -96,6 +108,38 @@ export default [
         },
         {path: '/PcDetails/:article_id', name: '文章详情页', component: PcHomeDetails},
         {path: '/PcExhibition', name: 'Pc展集页', component: PcExhibition},
+        {
+          path: '/PcUser',
+          name: 'PC个人中心', 
+          component: PcUser,
+          children: [
+            {
+              path: '/PcUser/Release', 
+              name: '我发布的', 
+              redirect:{ path:'/PcUser/Release/Tpl' },
+              component: PcUserRelease,
+              children: [
+                {path: '/PcUser/Release/Tpl', name: '我的文章', component: PcReleaseTpl},
+                {path: '/PcUser/Release/Coll', name: '我的收藏', component: PcReleaseColl},
+                {path: '/PcUser/Release/Comm', name: 'PC我的评论', component: PcReleaseComm},
+                {path: '/PcUser/Release/Supp', name: '我的点赞', component: PcReleaseSupp},
+                {path: '/PcUser/Release/Focus', name: '我的关注', component: PcReleaseFocus}
+              ]},
+            {
+              path: '/PcUser/Setting',
+              name: '个人设置',
+              redirect:{ path:'/PcUser/Setting/data' },
+              component: PcUserSetting,
+              children:[
+                {path: '/PcUser/Setting/data', name: '个人资料', component: PcSettingData},
+                {path: '/PcUser/Setting/Phone', name: '修改手机', component: PcSettingPhone},
+                {path: '/PcUser/Setting/Black', name: 'PC黑名单', component: PcSettingBlack},
+                {path: '/PcUser/Setting/Key', name: 'PC关键词过滤', component: PcSettingKey}
+              ],
+            }
+
+          ]
+        },
       ]
     }
   ]

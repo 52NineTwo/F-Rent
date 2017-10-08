@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="pc-content">
     <mu-back-top :bottom="80" :right="15" :duration="1000">
         <mu-float-button icon="arrow_upward"/>
     </mu-back-top>

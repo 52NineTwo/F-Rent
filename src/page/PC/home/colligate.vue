@@ -13,37 +13,22 @@
                 </span>
             </div>
         </div>
-        <mu-card style="width: 49%;margin-top:1rem;" v-for="content in Content_Data" :key="content.id">
-          <div @click="GoTo_Detalis(content.name)">
-            <mu-card-header :title="content.name" :subTitle="content.date">
-              <mu-avatar :src="content.icon + content.id" slot="avatar"/>
-            </mu-card-header>
-            <mu-card-title :title="content.title"/>
-            <mu-card-text>
-              {{content.source}}
-              <img style="padding-top:0.5rem" :src="content.url[0].name + content.urlid">
-            </mu-card-text>
-            <mu-card-actions>
-                <mu-badge :content="' # ' +  content.label" secondary/>
-                <div class="card-bottom-data">
-                    <mu-icon value="remove_red_eye" class="card-bottom-icon" :size="20"/>
-                    <p>{{content.see}}</p>
-                </div>
-                <div class="card-bottom-data">
-                    <mu-icon value="favorite_border" class="card-bottom-icon" :size="20"/>
-                    <p>{{content.fabulous}}</p>
-                </div>
-                <div class="card-bottom-data">
-                    <mu-icon value="chat" class="card-bottom-icon" :size="20"/>
-                    <p>{{content.comment}}</p>
-                </div>
-            </mu-card-actions>
-          </div>
-        </mu-card>
+        <demo-card @click="GoTo_Detalis(content.name)" v-for="content in Content_Data" :key="content.id" style="width: 49%;"
+        :headername="content.name"
+        :headerdate="content.date"
+        :headerimg="content.icon + content.id"
+        :contenttitle="content.title"
+        :content="content.source"
+        :contentimg="content.url[0].name + content.urlid"
+        :bottomsee="content.see"
+        :bottomfabulous="content.fabulous"
+        :bottomcomment="content.comment"
+        :contentlabel="'#' + content.label"></demo-card>
         <mu-infinite-scroll :scroller="scroller" :loading="loading"  @load="loadMore"/>
     </div>
 </template>
 <script>
+import DemoCard from '@/components/Pc/democard'
 export default {
   data () {
     return {
@@ -52,6 +37,9 @@ export default {
       scroller: null,
       list_data_login_data: {},
     }
+  },
+  components:{
+    DemoCard,
   },
   created() {
     this.Login_Data();

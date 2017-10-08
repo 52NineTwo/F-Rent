@@ -13,6 +13,7 @@ import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-carbon.css'
 import Toast from './components/Toast.js'
 import './components/Toast.css'
+import '@/assets/css/PcClass.css'
 
 Vue.use(Toast)
 Vue.use(Router)
@@ -23,8 +24,8 @@ window.axios = axios;
 Vue.use(ImgLazyLoad, {
   loading: 'http://image.heitem.com/timg.gif',
   })
-axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
-axios.defaults.autofaceURL = 'https://www.easy-mock.com/mock/5993f32f059b9c566dbf4430/frent';
+axios.defaults.baseURL = 'http://api.heitem.com';
+axios.defaults.autofaceURL = 'http://api.heitem.com';
 
 const router = new Router({
   mode: 'history',

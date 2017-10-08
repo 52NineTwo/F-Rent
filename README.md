@@ -1,5 +1,5 @@
 ## 前言
->本项目(友租)是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个移动端轻社区
+>本项目(友租)是基于Vue2、Vuex、Muse-UI、es6、webpack构建的一个移动端、PC端轻社区项目
 >
 >[项目更新历史](#更新)
 >
@@ -22,7 +22,7 @@
 [GitHub](https://github.com/52NineTwo/F-Rent)
 
 ## 技术栈
-*  Vue2			[GitHub地址](https://github.com/vuejs/vue)
+*  Vue2    		[GitHub地址](https://github.com/vuejs/vue)
 *  Vuex			[GitHub地址](https://github.com/vuejs/vuex)
 *	Vue-router	[GitHub地址](https://github.com/vuejs/vue-router)
 *	axios			[GitHub地址](https://github.com/mzabriskie/axios)
@@ -67,7 +67,7 @@
 	- [x] 收到的评论(完成)
 	- [x] 分类及标签(完成)
 	- [x] 数据排行榜(完成)
-	- [ ] 发现(未完成)
+	- [x] 发现(未完成)
 	- [ ] 更多模块(等待脑细胞复活)
 - [ ] 个人中心(无后台功能受限)
 	- [x] 修改资料(待改进)
@@ -86,12 +86,20 @@
 	- [x] 注册(完成)
 
 ## 截图
+
+#### 移动端
 ![首页](./demonstration/1.gif)
 ![登录](./demonstration/2.gif)
 ![发现](./demonstration/4.gif)
 ![评论、标签](./demonstration/3.gif)
 ![黑名单、关键字](./demonstration/6.gif)
 ![资料、发布关注](./demonstration/5.gif)
+
+#### PC端
+![首页](http://image.heitem.com/PC%20-%20%E9%A6%96%E9%A1%B5.png)
+![详情页](http://image.heitem.com/PC%20-%20%E8%AF%A6%E6%83%85%E9%A1%B5.png)
+![设置](http://image.heitem.com/PC%20-%20%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%20-%20%E8%AE%BE%E7%BD%AE.png)
+![关注](http://image.heitem.com/PC%20-%20%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%20-%20%E5%85%B3%E6%B3%A8.png)
 
 ## 项目目录说明
 <pre>
@@ -134,7 +142,7 @@
 │   │   ├── index.vue                      // 底部四栏
 │   ├── router	        // 路由配置文件
 │   ├── vuex	       	// vuex配置文件
-│   ├── App.vue         // 主页面 
+│   ├── App.vue         // 主页面
 │   └── main.js         // Webpack 预编译入口
 </pre>
 
@@ -175,3 +183,16 @@
 >>>2.使用Vuex进行登录状态等状态管理
 >>>
 >>>3.添加文章详情页
+
+#### 2017-10-08
+>本次更新了部分PC端(费了大量脑细胞 PC端的交互以及界面容我骄傲一下 哈哈哈哈)
+>由于重要的模块还没有完成所以线上地址并不能预览，可以clone项目本地查看 具体路由地址可以查看路由配置文件
+>>开发周期: 国庆假期一周
+>>
+>>>1. 由于一样使用了Muse-UI框架所以在原项目上继续开发
+>>>
+>>>2. 暂时只完成了首页、详情页、个人中心页
+>>>
+>>>3. 关于PC、移动跳转会选择使用Vue-Router的路由钩子来完成
+>>>
+>>>4. 由于PC端的布局会有大变化所以此次更新并没有太大量

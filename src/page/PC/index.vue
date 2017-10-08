@@ -15,7 +15,7 @@
             <mu-icon-button style="color:#fff;top:4px;margin-right:1rem" icon="notifications"/>
             <mu-avatar @click="handleHover" ref="mumenu" style="position:absolute;top:7px;" slot="left" src="http://image.heitem.com/20170831150415508632988.jpg">
               <mu-menu v-show="TopMenu" class="TopMenu" >
-                <mu-menu-item leftIconColor="#fff" title="个人中心" leftIcon="account_circle"/>
+                <mu-menu-item leftIconColor="#fff" to="/PcUser" title="个人中心" leftIcon="account_circle"/>
                 <mu-menu-item leftIconColor="#fff" title="我的关注" leftIcon="person_add"/>
                 <mu-menu-item leftIconColor="#fff" title="我发布的" leftIcon="edit"/>
                 <mu-divider />
@@ -25,9 +25,7 @@
             </mu-avatar>
         </div>
     </div>
-    <div class="content">
-        <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -38,7 +36,10 @@ export default {
       activeList: 'list1',
       TopMenu: false,
       TopMenuClassLeft: '',
+      content_class: 'content',
     }
+  },
+  mounted(){
   },
   methods: {
     handleHover () {
@@ -86,7 +87,7 @@ html,body{height: 100% !important;}
 
 .nav{
   display: inline-block;
-  width: calc(100% - 250px);
+  width: calc(100% - 278px);
   margin: 0 auto;
 }
 
@@ -94,28 +95,6 @@ html,body{height: 100% !important;}
   margin: 0 auto;
   width: 400px;
 }
-
-.content{
-  overflow: hidden;
-  width: 960px;
-  margin: 0 auto;
-  min-height: calc(100% - 55px);
-  margin-top: 55px;
-}
-
-.content-left{
-  width: 30%;
-  float: left;
-  margin-bottom: -4000px;
-  padding-bottom: 4000px;
-}
-
-.content-right{
-  width: 70%;
-  display: inline-block;
-  float: right;
-}
-
 .breadcrumb{
   margin: 10px 0;
 }

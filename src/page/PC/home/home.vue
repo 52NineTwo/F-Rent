@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="pc-content">
       <div class="content-left" ref="leftmenu">
         <mu-list @change="handleListChange" :value="activeList">
           <mu-raised-button label="发布" icon="create" secondary style="border-radius: 20px;width:80%;margin-left:10%;margin-bottom: .5rem;"/>
